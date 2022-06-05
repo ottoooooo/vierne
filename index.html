@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+	<title>OTONIEL REYES CRUZ</title>
+	
+</head>
+<body>
+
+	<h1> Trabajando con un json (javascript oriented object)</h1>
+	<H3>agregar heroes</H3>
+	<form action="viernes.php" method="post">
+		<table>
+			<tr><td>id:</td>
+				<td><input type="text" name="id"</td></tr>
+			<tr><td>nombre:</td>
+				<td><input type="text" name="nombre"</td></tr>
+			<tr><td>edad:</td>
+				<td><input type="text" name="edad"</td></tr>
+			<tr><td>identidadsecreta:</td>
+				<td><input type="text" name="identidadsecreta"</td></tr>
+			<tr><td>poderes:</td>
+				<td><input type="text" name="nombre"</td></tr>
+		</table>
+
+		<tr><td><input type="submit" value="agregar"></td></tr>
+
+
+	<table id="table">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Edad</th>
+			<th>Identidad Secreta</th>
+			<th>Poderes</th>
+		</tr>
+			<script>
+				$(document).ready(function(){
+					$.getJSON("viernes.json", function(data){
+						var heroe='';
+						$.each(data,function(key, value){
+							heroe+='<tr>';
+							heroe+='<td>'+value.id+'</td>';
+							heroe+='<td>'+value.nombre+'</td>';
+							heroe+='<td>'+value.edad+'</td>';
+							heroe+='<td>'+value.identidadsecreta+'</td>';
+							heroe+='<td>'+value.poderes+'</td>';
+
+						});
+						$('#table').append(heroe);
+					});
+				});
+			</script>
+	</table>
+</body>
+</html>
